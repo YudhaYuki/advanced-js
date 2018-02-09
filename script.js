@@ -113,7 +113,7 @@ console.log(obj.city);
 
 var years = [1990, 1965, 1937, 2005, 1998];
 
-function arrCalc(arr, fn) {
+function arrayCalc(arr, fn) {
     var arrRes = [];
     for (var i = 0; i < arr.length; i++) {
         arrRes.push(fn(arr[i]));
@@ -125,5 +125,13 @@ function calculateAge(el) {
     return 2016 - el;
 }
 
-var ages = arrCalc(years, calculateAge);
+function isFullAge(el) {
+    return el >= 18;
+}
+
+var ages = arrayCalc(years, calculateAge);
+
+var fullAges = arrayCalc(ages, isFullAge);
+
 console.log(ages);
+console.log(fullAges);
