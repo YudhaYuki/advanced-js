@@ -211,6 +211,7 @@ game();
 
 ///////////////////////////// ----------- CLOSURE --------------- /////////////////
 
+/*
 function retirement(retirementAge) {
     var a = ' years left until retirement.';
     return function(yearOfBirth) {
@@ -249,3 +250,53 @@ function interviewQuestion(job) {
 
 interviewQuestion('teacher')('John');
 interviewQuestion('designer')('John');
+
+*/
+
+///////////////////////////// ----------- BIND, CALL, APPLY --------------- /////////////////
+
+var john = {
+    name: 'John',
+    age: 26,
+    job: 'teacher',
+    presentation: function(style, timeOfDay) {
+        if (style === 'formal') {
+            console.log('Good ' + timeOfDay + ', Ladies and gentlemen! I\'m ' + this.name + ', I\'m a '+ this.job + ' and I\'m '+ this.age + ' years old.');
+        } else if (style === 'friendly') {
+            console.log('Good ' + timeOfDay + ', Ladies and gentlemen! I\'m ' + this.name + ', I\'m a '+ this.job + ' and I\'m '+ this.age + ' years old. Have a nice ' + timeOfDay + '.');
+        }
+    }
+}
+
+var emily = {
+    name: 'Emily',
+    age: 35,
+    job: 'designer'
+}
+
+john.presentation('formal', 'morning');
+
+// Call method allows us to set the "this" variable here in the first argument, and we set it to emily, because we want to use john's presentation method, but setting the this variable to "emily", so that we can use john's method on emily
+john.presentation.call(emily, 'friendly', 'afternoon');
+
+
+// apply method, the only difference is that this one accepts the argument as an array, so that's only two arguments, first emily variale, and then an array where all the other arguments go
+// but this is not gonna work, because our method does not expect to receive an array as the input
+// So the presentation want two normal arguments 
+// john.presentation.apply(emily, ['friendly', 'afternoon']);
+
+
+// BIND, is very similar to call method as well
+// So it also allows us to set THIS variable explicitely
+// the difference is, but it does not immediately call the function
+// instead generates a copy of the function, so that we can store it somewhere
+// it useful to create function with preset argument
+var johnFriendly = john.presentation.bind(john, 'friendly');
+
+johnFriendly('morning');
+johnFriendly('night');
+
+var emilyFormal = john.presentation.bind(emily, 'formal');
+emilyFormal('afternoon');
+
+
