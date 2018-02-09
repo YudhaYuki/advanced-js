@@ -168,5 +168,13 @@ function interviewQuestion(job) {
 }
 
 var teacherQuestion = interviewQuestion('teacher');
+var designerQuestion = interviewQuestion('designer');
 
 teacherQuestion('John');
+designerQuestion('John');
+designerQuestion('Jane');
+designerQuestion('Mark');
+designerQuestion('Mike');
+
+// Another way to do that
+interviewQuestion('teacher')('Mark');
