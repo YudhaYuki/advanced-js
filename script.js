@@ -464,15 +464,14 @@ c) correct answer (I would use a number for this)
     
         questions[n].displayQuestion();
     
-        // parsInt converts string to an integernumber
-        var answer = parseInt(prompt('Please select the correct answer.'));
+        var answer = prompt('Please select the correct answer.');
     
         // Call the correctAnswer method
-        questions[n].checkAnswer(answer);
+        questions[n].checkAnswer(parseInt(answer));
 
         if(answer !== 'exit') {
             questions[n].checkAnswer(answer);
-            
+
             nextQuestion();   
         }     
     }
