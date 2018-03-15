@@ -352,6 +352,10 @@ function Question(question, answer, correct) {
     this.correct = correct;
 }
 
+Question.prototype.displayQuestion() {
+    console.log(this.question);
+}
+
 // 2
 var q1 = new Question('Is JavaScript the coolest programming language in the world?', ['YES', 'NO'], 0);
 
@@ -362,6 +366,8 @@ var q3 = new Question('What does best describe coding', ['BORING', 'HARD', 'FUN'
 // 3
 var questions = [q1, q2, q3];
 
+// 4
+var n = Math.floor(Math.random() * questions.length);
 
 /*
 --- Expert level ---
