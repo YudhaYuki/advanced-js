@@ -345,47 +345,54 @@ c) correct answer (I would use a number for this)
 7. Suppose this code would be a plugin for other programmers to use in their code. So make sure that all your code is private and doesn't interfere with the other programmers code (Hint: we learned a special technique to do exactly that).
 */
 
-// 1
-function Question(question, answers, correct) {
-    this.question = question;
-    this.answers = answers;
-    this.correct = correct;
-}
+(function() { 
 
-Question.prototype.displayQuestion = function() {
-    console.log(this.question);
-
-    for (i = 0; i < this.answers.length; i++) {
-        console.log(i + ': ' + this.answers[i]);
+    // 1
+    function Question(question, answers, correct) {
+        this.question = question;
+        this.answers = answers;
+        this.correct = correct;
     }
-}
 
-Question.prototype.checkAnswer = function(ans) {
-    if (ans === this.correct) {
-        console.log('Correct answer!');
-    } else {
-        console.log('Wrong answer, try again!');
+    Question.prototype.displayQuestion = function() {
+        console.log(this.question);
+
+        for (i = 0; i < this.answers.length; i++) {
+            console.log(i + ': ' + this.answers[i]);
+        }
     }
-}
 
-// 2
-var q1 = new Question('Is JavaScript the coolest programming language in the world?', ['YES', 'NO'], 0);
+    Question.prototype.checkAnswer = function(ans) {
+        if (ans === this.correct) {
+            console.log('Correct answer!');
+        } else {
+            console.log('Wrong answer, try again!');
+        }
+    }
 
-var q2 = new Question('What\'s the name of this course teacher?', ['JOHN', 'MIKAL', 'JONAS'], 2);
+    // 2
+    var q1 = new Question('Is JavaScript the coolest programming language in the world?', ['YES', 'NO'], 0);
 
-var q3 = new Question('What does best describe coding', ['BORING', 'HARD', 'FUN', 'TEDIOUS'], 2);
+    var q2 = new Question('What\'s the name of this course teacher?', ['JOHN', 'MIKAL', 'JONAS'], 2);
 
-// 3
-var questions = [q1, q2, q3];
+    var q3 = new Question('What does best describe coding', ['BORING', 'HARD', 'FUN', 'TEDIOUS'], 2);
 
-// 4
-var n = Math.floor(Math.random() * questions.length);
+    // 3
+    var questions = [q1, q2, q3];
 
-questions[n].displayQuestion();
+    // 4
+    var n = Math.floor(Math.random() * questions.length);
 
-var answer = parseInt(prompt('Please select the correct answer.'));
+    questions[n].displayQuestion();
 
-questions[n].checkAnswer(answer);
+    var answer = parseInt(prompt('Please select the correct answer.'));
+
+    questions[n].checkAnswer(answer);
+
+
+}) ();
+
+
 
 /*
 --- Expert level ---
