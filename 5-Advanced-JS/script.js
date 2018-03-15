@@ -196,7 +196,7 @@ game()
 */
 
 ///////////////////// ---- CLOSURE ---- ////////////////////
-
+/*
 function retirement(retirementAge) {
     var a = ' years left until retirement';
     return function(yearOfBirth) {
@@ -214,6 +214,7 @@ retirementGermany(1990);
 retirementIceland(1990);
 
 // retirement(66)(1990);
+*/
 
 /*
 function interviewQuestion(job) {
@@ -233,6 +234,7 @@ function interviewQuestion(job) {
 }
 */
 
+/*
 function interviewQuestion(job) {
     return function(name) {
         if (job === 'designer') {
@@ -246,3 +248,32 @@ function interviewQuestion(job) {
 }
 
 interviewQuestion('teacher')('John');
+*/
+
+
+
+///////////////////// ---- BIND, CALL, APPLY ---- ////////////////////
+
+var john = {
+    name: 'John',
+    age: 26,
+    job: 'teacher',
+    presentation: function(style, timeOfDay) {
+        if (style === 'formal') {
+            console.log('Good ' + timeOfDay + ', ladies and gentlemen! I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.');
+        } else if (style === 'friendly') {
+            console.log('Hey, what\'s up? I\'m ' + this.name +  '. I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. Have a nice ' + timeOfDay + '.');
+        }
+    }
+};
+
+var emily = {
+    name: 'Emily',
+    age: 35,
+    job: 'designer'
+};
+
+john.presentation('formal', 'morning');
+
+john.presentation.call(emily, 'friendly', 'afternoon');
+
